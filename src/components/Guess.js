@@ -15,7 +15,6 @@ const Guess = () => {
 
   const handleGuess = (event) => {
     event.preventDefault();
-    console.log(secretNumber);
     setNumGuesses(numGuesses + 1);
     if (parseInt(guess) === secretNumber) {
       OmniAural.setProperty("message", `You won in ${numGuesses} guesses!`);
