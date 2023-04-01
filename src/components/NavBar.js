@@ -9,17 +9,18 @@ const useStyles = makeStyles(() => ({
   },
   title: {
     flexGrow: 1,
+    marginLeft: 125,
   },
 }));
 
 const NavBar = () => {
-  const classes = useStyles();
+  const header = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div className={header.root}>
       <AppBar position="static">
         <Toolbar>
-          <Typography variant="h6" className={classes.title}>
+          <Typography align="center" variant="h5" className={header.title}>
             Skill Demo
           </Typography>
           <Button color="inherit" component={Link} to="/guess">
