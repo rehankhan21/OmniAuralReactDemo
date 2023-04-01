@@ -30,7 +30,7 @@ const Guess = () => {
   const handlePlayAgain = () => {
     setSecretNumber(Math.floor(Math.random() * 100) + 1);
     setNumGuesses(0);
-    useOmniAural.message = "Guess a number between 1 and 100";
+    OmniAural.setProperty("message", "Guess a number between 1 and 100");
   };
 
   return (
