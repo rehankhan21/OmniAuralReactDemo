@@ -10,11 +10,11 @@ const State = () => {
     dispatch({ type: "SELECT_STATE", payload: state });
   };
 
-  const handleBackClick = () => {
+  const handleStateResetClick = () => {
     dispatch({ type: "DESELECT_STATE" });
   };
 
-  const renderStateList = () => {
+  const displayStateList = () => {
     return statesData.statesInfo.states.map((state) => (
       <div
         key={state["@attributes"].abbreviation}
@@ -25,7 +25,7 @@ const State = () => {
     ));
   };
 
-  const renderStateDetail = () => {
+  const displayStateDetail = () => {
     const state = selectedState["@attributes"];
     const flagUrl = `https://www.50states.com/images/redesign/flags/${state[
       "abbreviation"
@@ -43,12 +43,12 @@ const State = () => {
         <p>Time zone 1: {state["time-zone-1"]}</p>
         <p>Time zone 2: {state["time-zone-2"]}</p>
         <p>DST: {state.dst}</p>
-        <button onClick={handleBackClick}>Back</button>
+        <button onClick={handleStateResetClick}>Back</button>
       </div>
     );
   };
 
-  return <div>{selectedState ? renderStateDetail() : renderStateList()}</div>;
+  return <div>{selectedState ? displayStateDetail() : displayStateList()}</div>;
 };
 
 export default State;

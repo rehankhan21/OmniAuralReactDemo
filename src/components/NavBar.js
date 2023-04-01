@@ -1,37 +1,21 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, Button } from "@material-ui/core";
-import { Link } from "react-router-dom";
-
-const useStyles = makeStyles(() => ({
-  root: {
-    flexGrow: 1,
-  },
-  title: {
-    flexGrow: 1,
-    marginLeft: 125,
-  },
-}));
+import "bootstrap/dist/css/bootstrap.css";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 const NavBar = () => {
-  const header = useStyles();
-
   return (
-    <div className={header.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography align="center" variant="h5" className={header.title}>
-            Skill Demo
-          </Typography>
-          <Button color="inherit" component={Link} to="/guess">
-            Guess
-          </Button>
-          <Button color="inherit" component={Link} to="/state">
-            State
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+    <Navbar bg="dark" variant="dark" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home">Skill Demo</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="/guess">Guess</Nav.Link>
+            <Nav.Link href="/state">State</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
