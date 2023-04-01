@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import statesData from "../json/states.json";
 
 const State = () => {
-  const [selectedState, setSelectedState] = useState(null);
+  const selectedState = useSelector((state) => state.selectedState);
+  const dispatch = useDispatch();
 
   const handleStateClick = (state) => {
-    setSelectedState(state);
+    dispatch({ type: "SELECT_STATE", payload: state });
   };
 
   const handleBackClick = () => {
-    setSelectedState(null);
+    dispatch({ type: "DESELECT_STATE" });
   };
 
   const renderStateList = () => {
