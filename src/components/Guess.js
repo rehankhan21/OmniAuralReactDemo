@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import OmniAural, { useOmniAural } from "omniaural";
+import OmniAural, { useOmniAural, useOmniAuralEffect } from "omniaural";
 
 const Guess = () => {
   const [secretNumber, setSecretNumber] = useState(
@@ -8,6 +8,10 @@ const Guess = () => {
   const [guess, setGuess] = useState("");
   const [numGuesses, setNumGuesses] = useState(0);
   const [message] = useOmniAural("message");
+
+  useOmniAuralEffect(() => {
+    console.log("message has changed");
+  }, ["message"]);
 
   const handleInputChange = (event) => {
     setGuess(event.target.value);
