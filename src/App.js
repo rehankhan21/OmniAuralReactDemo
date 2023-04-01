@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import OmniAural from "omniaural";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
+import Guess from "./components/Guess";
+import State from "./components/State";
+
+OmniAural.initGlobalState({
+  message: "Guess a number between 1 and 100",
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Guess />} />
+          <Route path="/guess" element={<Guess />} />
+          <Route path="/State" element={<State />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
