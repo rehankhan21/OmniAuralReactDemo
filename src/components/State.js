@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import statesData from "../json/states.json";
+import { Button, ListGroup } from "react-bootstrap";
 
 const State = () => {
   const selectedState = useSelector((state) => state.selectedState);
@@ -16,12 +17,12 @@ const State = () => {
 
   const displayStateList = () => {
     return statesData.statesInfo.states.map((state) => (
-      <div
+      <ListGroup
         key={state["@attributes"].abbreviation}
         onClick={() => handleStateClick(state)}
       >
-        {state["@attributes"].name}
-      </div>
+        <ListGroup.Item> {state["@attributes"].name}</ListGroup.Item>
+      </ListGroup>
     ));
   };
 
@@ -32,19 +33,29 @@ const State = () => {
     ].toLowerCase()}-largeflag.png`;
 
     return (
-      <div>
-        <h2>{state.name}</h2>
-        <img src={flagUrl} alt={`${state.name} flag`} />
-        <p>Abbreviation: {state.abbreviation}</p>
-        <p>Capital: {state.capital}</p>
-        <p>Most populous city: {state["most-populous-city"]}</p>
-        <p>Population: {state.population}</p>
-        <p>Square miles: {state["square-miles"]}</p>
-        <p>Time zone 1: {state["time-zone-1"]}</p>
-        <p>Time zone 2: {state["time-zone-2"]}</p>
-        <p>DST: {state.dst}</p>
-        <button onClick={handleStateResetClick}>Back</button>
-      </div>
+      <ListGroup>
+        <ListGroup.Item>
+          <h2>{state.name}</h2>
+        </ListGroup.Item>
+        <ListGroup.Item>
+          <img src={flagUrl} alt={`${state.name} flag`} />
+        </ListGroup.Item>
+        <ListGroup.Item>Abbreviation: {state.abbreviation}</ListGroup.Item>
+        <ListGroup.Item>Capital: {state.capital}</ListGroup.Item>
+        <ListGroup.Item>
+          Most populous city: {state["most-populous-city"]}
+        </ListGroup.Item>
+        <ListGroup.Item>Population: {state.population}</ListGroup.Item>
+        <ListGroup.Item>Square miles: {state["square-miles"]}</ListGroup.Item>
+        <ListGroup.Item>Time zone 1: {state["time-zone-1"]}</ListGroup.Item>
+        <ListGroup.Item>Time zone 2: {state["time-zone-2"]}</ListGroup.Item>
+        <ListGroup.Item>DST: {state.dst}</ListGroup.Item>
+        <ListGroup.Item>
+          <Button variant="dark" onClick={handleStateResetClick}>
+            Back
+          </Button>
+        </ListGroup.Item>
+      </ListGroup>
     );
   };
 
